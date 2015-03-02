@@ -1,16 +1,17 @@
 {
   "name": "loading-mask",
   "version": "0.1.0",
-  "authors": [
-    "ushiboy <ushiboy.dev@gmail.com>"
-  ],
+  "main": "loading-mask.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "Gruntfile.js",
+    "bower.json",
+    "package.json"
   ],
   "dependencies": {
     "spin.js": "~2.0.2"

@@ -2,13 +2,13 @@
   'use strict';
   // Set up Loading appropriately for the environment. Start with AMD.
   if (typeof define === 'function' && define.amd) {
-    define(['spin.js', 'exports'], function(Spinner, exports) {
+    define(['spin.js'], function(Spinner) {
       root.LoadingMask =  factory(root, Spinner);
     });
   }
   // Next for Node.js or CommonJS.
   else if (typeof exports !== 'undefined') {
-    exports = factory(root, require('spin.js')).LoadingMask;
+    module.exports = factory(root, require('spin.js'));
   }
   // Finally, as a browser global.
   else {
@@ -49,8 +49,6 @@
     delete(this.el);
     return this;
   };
-
-  root.LoadingMask = LoadingMask;
 
   return LoadingMask;
 }));

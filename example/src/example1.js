@@ -9,13 +9,13 @@
   document.getElementById('panel-1st').appendChild(loading1.el);
   document.getElementById('panel-3rd').appendChild(loading2.el);
   setTimeout(function() {
-    loadingBody.destroy();
+    loadingBody.remove();
   }, 3000);
   setTimeout(function() {
-    loading1.destroy();
+    loading1.remove();
   }, 5000);
   setTimeout(function() {
-    loading2.destroy();
+    loading2.remove();
   }, 7000);
 
 })(this);

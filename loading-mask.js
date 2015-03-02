@@ -2,19 +2,17 @@
   'use strict';
   // Set up Loading appropriately for the environment. Start with AMD.
   if (typeof define === 'function' && define.amd) {
-    define(['spin.js'], function(Spinner) {
-      root.LoadingMask =  factory(root, Spinner);
-    });
+    define(['spin.js'], factory);
   }
   // Next for Node.js or CommonJS.
   else if (typeof exports !== 'undefined') {
-    module.exports = factory(root, require('spin.js'));
+    module.exports = factory(require('spin.js'));
   }
   // Finally, as a browser global.
   else {
-    root.LoadingMask = factory(root, root.Spinner);
+    root.LoadingMask = factory(root.Spinner);
   }
-}(this, function (root, Spinner) {
+}(this, function (Spinner) {
   'use strict';
 
   function LoadingMask(config) {
@@ -44,7 +42,7 @@
     this.el.style.display = 'none';
     return this;
   };
-  LoadingMask.prototype.destroy = function() {
+  LoadingMask.prototype.remove = function() {
     this.el.parentNode.removeChild(this.el);
     delete(this.el);
     return this;

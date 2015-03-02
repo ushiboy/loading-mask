@@ -2,7 +2,7 @@
   'use strict';
   // Set up Loading appropriately for the environment. Start with AMD.
   if (typeof define === 'function' && define.amd) {
-    define(['spin.js'], factory);
+    define(['spin'], factory);
   }
   // Next for Node.js or CommonJS.
   else if (typeof exports !== 'undefined') {

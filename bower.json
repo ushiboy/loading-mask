@@ -10,7 +10,7 @@
     "test",
     "tests",
     "Gruntfile.js",
-    "bower.json",
+    "example",
     "package.json"
   ],
   "dependencies": {

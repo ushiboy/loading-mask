@@ -40,7 +40,8 @@
     }
   }
   LoadingMask.prototype.show = function() {
-    this.spinner = new Spinner(this.config.spinnerConfig).spin(this.el);
+    this.spinner = new Spinner(this.config.spinnerConfig).spin();
+    this.el.appendChild(this.spinner.el);
     this.el.style.display = '';
     return this;
   };

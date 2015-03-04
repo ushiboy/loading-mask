@@ -15,8 +15,12 @@
 }(this, function (Spinner) {
   'use strict';
 
-  function LoadingMask(config) {
-    config = config || {};
+  function LoadingMask(config, target) {
+    if (config && config.nodeType === 1) {
+      target = config;
+      config = undefined;
+    }
+    config = this.config = config || {};
     this.el = document.createElement('div');
     this.el.className = 'loading-mask';
 
@@ -31,18 +35,29 @@
     overlay.style.left = '0px';
     this.el.appendChild(overlay);
 
-    var spinner = new Spinner(config.spinnerConfig).spin();
-    this.el.appendChild(spinner.el);
+    if (target != null) {
+      this.showAt(target);
+    }
   }
   LoadingMask.prototype.show = function() {
+    this.spinner = new Spinner(this.config.spinnerConfig).spin(this.el);
     this.el.style.display = '';
     return this;
   };
+  LoadingMask.prototype.showAt = function(el) {
+    this.show();
+    el.appendChild(this.el);
+    return this;
+  };
   LoadingMask.prototype.hide = function() {
+    if (this.spinner != null) {
+      this.spinner.stop();
+    }
     this.el.style.display = 'none';
     return this;
   };
   LoadingMask.prototype.remove = function() {
+    this.hide();
     this.el.parentNode.removeChild(this.el);
     delete(this.el);
     return this;

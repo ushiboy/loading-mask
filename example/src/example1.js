@@ -2,17 +2,20 @@
   'use strict';
   var LoadingMask = require('../../loading-mask');
 
-  var loadingBody = new LoadingMask();
+  var loadingBody = new LoadingMask(document.body);
   var loading1 = new LoadingMask();
   var loading2 = new LoadingMask();
-  document.body.appendChild(loadingBody.el);
-  document.getElementById('panel-1st').appendChild(loading1.el);
-  document.getElementById('panel-3rd').appendChild(loading2.el);
+  loading1.showAt(document.getElementById('panel-1st'));
+  loading2.showAt(document.getElementById('panel-3rd'));
   setTimeout(function() {
     loadingBody.remove();
   }, 3000);
+
   setTimeout(function() {
-    loading1.remove();
+    loading1.hide();
+    setTimeout(function() {
+      loading1.show();
+    }, 1000);
   }, 5000);
   setTimeout(function() {
     loading2.remove();
